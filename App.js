@@ -1,38 +1,71 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View, Image} from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    Alert,
+    Button,
+    TextInput,
+    View,
+    ListView,
+    ScrollView,
+    Image
+} from 'react-native';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
+        });
         this.state = {
-            text: ''
+            text: '',
+            dataSource: ds.cloneWithRows([
+                'John',
+                'Joel',
+                'James',
+                'Jimmy',
+                'Jackson',
+                'Jillian',
+                'Julie',
+                'Devin'
+            ])
         };
     }
+
 
     render() {
         let pic = {
             uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
         };
         return (
-            <View style={styles.container}>
-                <TextInput style={{
-                    height: 40,
-                    width: 200
-                }} placeholder="Type here to translate!" onChangeText={(text) => this.setState({text})}/>
+            <ScrollView>
                 <Text style={{
-                    padding: 10,
-                    fontSize: 42
-                }}>
-                    {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
-                </Text>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Yeah really.</Text>
-                <Image source={pic} style={{
-                    width: 193,
-                    height: 110
-                }}/>
-            </View>
+                    fontSize: 96
+                }}>Scroll me plz</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>Scrolling down</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>More</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>Keep going</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>Almost there</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>you can do it</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>home stretch</Text>
+                <Text style={{
+                    fontSize: 96
+                }}>yay</Text>
+
+              <Button onPress={()=> Alert.alert("fuck dave")} title="Press Me" color="#841584" accessibilityLabel="Learn more about this purple button"/>
+            </ScrollView>
         );
     }
 }
